@@ -1,0 +1,1435 @@
+@charset 'utf-8';
+/* root variables */
+:root {
+    --color-white: #fff;
+    --color-light: #f4f4f4;        /* background color */ 
+    --color-dark: #525252;        /*text-color*/
+    --color-black: #141415;       /*text-color -h1,h2,h3*/
+    --color-primary: #f24e1e;
+    --color-primary-light: hsl(14,89%, 53%, 12%);
+    --color-success: #29f5a6;
+    --color-warning: #ffce31;
+
+    --transition: all 300ms ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    border: 0;
+    box-sizing: border-box;    
+}
+ul {list-style: none;}
+a {text-decoration: none; color: #333;}
+img {vertical-align:top;}
+
+::-webkit-scrollbar {
+    width: 10px;
+    background: var(--color-primary-light);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--color-primary);
+}
+html {
+    font-size: 15px;
+    scroll-behavior: smooth;
+}
+body {
+    background: var(--color-white);
+    font-family: 'Montserrat', sans-serif;
+    color: var(--color-dark);
+    max-width: 100vw;
+}
+
+.grid {
+    display: grid;
+    gap: 1.25rem;
+  }
+h1, h2, h3, h4, h5 {
+    color: var(--color-black);
+    line-height: 1.2;
+}
+
+h1 {
+    font-size: 3.8rem;
+}
+h2 {
+    font-size: 2.6rem;
+}
+h3 {
+    font-size: 1.6rem;
+}
+h4 {
+    font-size: 1.2rem;
+}
+h5 {
+    font-size: 0.86rem;
+}
+p {
+    line-height: 1.8;
+}
+
+.container {
+    /* width: 73%; */
+    /* width: 63%; */
+    width: 1200px;
+    margin: 0 auto;
+}
+section {
+    padding: 10rem 0 7rem;
+    /* padding: 5rem 0 5rem; */
+    max-width :100vw;
+    overflow-x: hidden;
+}
+section h1 {
+    text-align: center;
+    display: block;
+    margin-bottom: 5rem;
+}
+img {
+    width: 100%;
+}
+.btn {
+    padding: 1.4rem 3.4rem;
+    font-size: 1.1rem;
+    color: var(--color-black);
+    background: var(--color-white);
+    display: inline-block;
+    margin: 2rem 0;
+    /* margin: 2rem auto; */
+    transition: var(--transition);    
+}
+.btn:hover {
+    box-shadow: 0 2rem 2rem var(--color-primary-light);
+}
+.btn-primary {
+    background: var(--color-primary);
+    color: var(--color-white);
+}
+/* mobile btn 영역 */
+.mobile-btn {
+    position: fixed;
+    right: 15px;
+    top: 36px;
+    width: 24px;
+    height: 14px;    
+    z-index: 999;
+    display: none;
+
+}
+.mobile-btn span {
+    background-color: #333;   
+    width: 100%;
+    height: 2px;
+    transition: all 0.7s
+}
+.mobile-btn span.scroll {
+    background-color: #fff;
+}
+.mobile-btn .line {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+}
+.mobile-btn .line-top {
+    
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    /* background-color: #333; */
+    transition: all .3s;
+}
+.mobile-btn .line-bottom {
+    
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    /* background-color: #333; */
+    transition: all .3s;
+}
+/* .mobile-btn::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #333;
+    transition: all .3s;
+}
+.mobile-btn::after {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #333;
+    transition: all .3s;
+} */
+.mobile-btn-active .line {
+    width: 0;
+}
+.mobile-btn-active .line-top {
+    top:50%;
+    transform: rotate(45deg);
+}
+.mobile-btn-active .line-bottom {
+    top:50%;
+    transform: rotate(-45deg);
+}
+/* .mobile-btn-active span {
+    width: 0;
+}
+.mobile-btn-active::before {
+    top:50%;
+    transform: rotate(45deg);
+}
+.mobile-btn-active::after {
+    top:50%;
+    transform: rotate(-45deg);
+} */
+/* mobile menu 영역 */
+.menu-mobile {
+    position: fixed;
+    top: 82.5px;
+    right:-20rem;
+    flex-direction: column;
+    z-index: 998;
+    width: 20rem;        
+    height: 100vh;
+    background: var(--color-white);
+    box-shadow: 1rem 0  2rem var(--color-primary-light);
+    /* display: none;     */
+    transition: var(--transition);
+    overflow-y:auto;
+    
+}
+.menu-mobile.active {
+    right: 0;
+}
+
+.menu-mobile li 
+{   height: 4.6rem;
+    width: 100%;        
+}
+.menu-mobile li a {
+/*  
+    justify-content: start;
+    padding-left: 0.5rem; */
+    width: 100%;
+    height: 100%;       
+    display: block;
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
+    line-height: 5.5rem;
+    text-align: center; 
+    color: var(--color-black);
+    position: relative;
+    transition: var(--transition);
+}
+.menu-mobile li:hover a {
+    color: var(--color-primary);
+}
+.menu-mobile li.active a {
+    background: var(--color-primary);
+    color: var(--color-white);
+}  
+.menu-mobile.scroll {
+    background: rgba(1,1,1,0.5);
+}      
+
+.menu-mobile.scroll li{
+    opacity: 0.9;
+}
+.menu-mobile.scroll li a{
+    color: var(--color-white);
+    font-weight: bold;
+}
+/* layer mask영역 */
+.layer-mask {
+    /* display: none; */
+    position: fixed;
+    top: 81px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgb(0,0,0);
+    z-index: 9;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s;
+}
+.layer-mask.active {
+    opacity:0.3;
+    visibility: visible;
+    /* display: block; */
+}
+/* header영역 */
+header {
+    background: coral;
+    width: 100%;
+    height: 5.5rem;
+    background: var(--color-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top:0;
+    z-index: 997;
+    border-bottom: 1px solid var(--color-light);
+}
+
+header.show-box-shadow {
+    box-shadow: 0 0.6rem 1rem var(--color-primary-light);
+    border:none;
+    background: rgba(1,1,1,0.7)
+}
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+
+header .container h1 {
+    height: 70px;
+    width: 155px;
+}
+header .container h1 > a{
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: url('../images/logo4-removebg-preview.png') no-repeat left;
+    background-size: 155px 68.5px;   /*1:0.4425비율*/    
+    text-indent: -99999px;
+    font-size:0;    
+}
+header .container nav {
+    height: 100%;
+}
+header .container nav .menu {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+header .container nav .menu li {
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
+}
+header .container nav .menu li a {
+    height: 100%;
+    width: 7rem;    
+    display: block;
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
+    line-height: 5.5rem;
+    text-align: center; 
+    color: var(--color-black);
+    position: relative;
+    transition: var(--transition);
+}
+header .container nav .menu.scroll li a{
+    color: var(--color-white);
+}
+header nav .menu li:hover a {
+    color: var(--color-primary);
+}
+header nav .menu li.active a {
+    background: var(--color-primary);
+    color: var(--color-white);
+}
+/* header nav .menu li a:hover {
+    color: var(--color-primary);
+}
+header nav .menu li a.active {
+    background: var(--color-primary);
+    color: var(--color-white);
+} */
+
+/* ================ LANDING SECTION ==================== */
+section.landing {    
+    top: 5rem;
+    padding-top: 12rem;
+    padding-bottom: 14rem;
+}
+section.landing .container {
+    display: grid;
+    grid-template-columns: 5rem auto 28rem;
+    gap: 2rem;
+}
+section.landing .socials {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+    margin-top: 5rem;
+}
+section.landing .socials a {
+    font-size: 1.1rem;
+    background: var(--color-light);
+    color: var(--color-dark);
+    padding: 0.3rem;
+    border-radius: 50%;
+    height: 2rem;
+    width: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: var(--transition);
+}
+section.landing .socials a:hover {
+    background: var(--color-primary);
+    color: var(--color-white);
+}
+
+section.landing .info h1 {
+    text-align: left;
+    margin: 0;
+}
+section.landing h3 {
+    margin: 2.4rem 0 1rem;
+}
+section.landing .info p {
+    width: 35rem;
+}
+
+section.landing .profile-area {
+    display: flex;
+    justify-content: center;
+    align-items:center;
+}
+section.landing .profile-area .outer-circle {
+    width: 28rem;
+    height: 28rem;
+    border: 1px solid var(--color-primary);
+    border-radius: 50%;
+    position: relative;
+    /* background: blue; */
+    animation: move 30s linear infinite;
+}
+@keyframes move {
+    to {
+        transform: rotate(360deg);
+    }
+}
+section.landing .profile-area .outer-circle span {
+    display: block;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    position: absolute;
+    /* background: black; */
+    background: var(--color-white);
+    color: var(--color-primary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 1rem var(--color-primary-light);
+}
+section.landing .profile-area .outer-circle span:nth-child(1) {
+    left: calc(50% - 2rem);
+    top:-2rem;
+}
+section.landing .profile-area .outer-circle span:nth-child(2) {
+    right:  -2rem;
+    top: calc(50% - 2rem);
+}
+section.landing .profile-area .outer-circle span:nth-child(3) {
+    left:  -2rem;
+    top: calc(50% - 2rem);
+}
+section.landing .profile-area .outer-circle span:nth-child(4) {
+    left: calc(50% - 2rem);
+    bottom:-2rem;
+}
+section.landing .profile-area .mid-circle{
+    /* position: flex;
+    justify-content: center;
+    align-items: center; */
+    position: absolute;
+    width: 23rem;
+    height: 23rem;
+    border: 1px solid var(--color-primary);
+    border-radius: 50%;
+    /* position: relative; */
+    /* background: blue; */
+    animation: anticlockwise-move 40s linear infinite;
+}
+
+@keyframes anticlockwise-move {
+    to {
+        transform: rotate(-360deg);
+    }
+}
+section.landing .profile-area .mid-circle span {
+    display: block;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    position: absolute;
+    /* background: black; */
+    background: var(--color-white);
+    color: var(--color-primary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 1rem var(--color-primary-light);
+    font-size: 12px;
+}
+section.landing .profile-area .mid-circle span:nth-child(1) {
+    left: calc(50% - 1rem);
+    top:-1rem;
+}
+section.landing .profile-area .mid-circle span:nth-child(2) {
+    right:  -1rem;
+    top: calc(50% - 1rem);
+}
+section.landing .profile-area .mid-circle span:nth-child(3) {
+    left:  -1rem;
+    top: calc(50% - 1rem);
+}
+section.landing .profile-area .mid-circle span:nth-child(4) {
+    left: calc(50% - 1rem);
+    bottom:-1rem;
+}
+section.landing .profile-area .inner-circle {
+    /* display: none; */
+    position: absolute;
+    width: 20rem;
+    height: 20rem;
+    border-radius: 50%;
+    overflow:hidden;
+}
+/* ============================ about section =============================== */
+section.about {
+    background: var(--color-light);
+}
+section.about .container {
+    display: grid;
+    grid-template-columns: 26rem auto;
+    /* grid-template-rows: auto auto; */
+    gap: 5rem;    
+    position: relative;
+}
+section.about p {
+    margin-bottom: 1rem;
+}
+
+section.about .container .read-more-content {
+    display: none;
+}
+section.about .container .read-more-content.show-content {
+    display: block;
+}
+section.about .container .read-more {
+    display: block;
+    margin: 1rem 0 2rem;
+    color: var(--color-primary);
+    cursor: pointer;
+}
+section.about .container .read-more:hover {
+    text-decoration: underline;
+}
+/* ==================== skills section ====================== */
+section.skills .container {
+    width: 50%;    
+}
+section.skills .skill {
+    margin-bottom: 1rem;
+}
+section.skills .skill .head{
+    background: var(--color-primary);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--color-white);
+    padding: 1.6rem;
+    cursor:pointer;
+}
+section.skills .skill .head h4{
+    color: var(--color-white);
+}
+section.skills .skill .head .left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+section.skills .skill .items {
+    /* display:none; */
+    position: relative;   
+    max-height: 0;
+    overflow:hidden;
+    transition: max-height .7s;
+}
+/* for javascript show/hide items */
+section.skills .container .skill .items.show-items0 {
+    /* display: block; */    
+    max-height: 400px;
+}
+section.skills .container .skill .items.show-items1 {
+    /* display: block; */    
+    max-height: 400px;
+}
+section.skills .container .skill .items.show-items2 {
+    /* display: block; */    
+    max-height: 400px;
+}
+section.skills .skill .item {
+    display: flex;
+    flex-direction: column;
+    /* align-items: start; */
+    /* gap: 1rem; */
+    padding: 1.6rem;
+    background: var(--color-light);
+    margin-bottom: 0.3rem;
+    transition: var(--transition);
+}
+section.skills .skill .item:hover {
+    background: var(--color-white);
+}
+section.skills .skill .progress-area {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+section.skills .skill .item .progress-bar {
+    width: 100%;
+    height: 1rem;
+    background: var(--color-primary-light);
+}
+section.skills .skill .item .progress-bar .progress{  
+    height: 100%;
+    /* width: 92%; */
+    background: var(--color-primary);    
+}
+/* skill - first group */
+section.skills .skill .show-items0 .item:nth-child(1) .progress-bar .progress {   
+    /* width: 92%;     */
+    animation: progress0 .8s forwards;
+}
+section.skills .skill .show-items0 .item:nth-child(2) .progress-bar .progress {    
+    /* width: 88%;     */
+    animation: progress1 .8s forwards;
+}
+section.skills .skill .show-items0 .item:nth-child(3) .progress-bar .progress {    
+    /* width: 75%;     */
+    animation: progress2 .8s forwards;
+}
+@keyframes progress0{
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 92%;
+    }
+}
+@keyframes progress1{
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 88%;
+    }
+}
+@keyframes progress2{
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 75%;
+    }
+}
+/* 상태유지 */
+section.skills .skill:nth-child(1) .items .item:nth-child(1) .progress-bar .progress{
+    width: 92%;    
+}
+section.skills .skill:nth-child(1) .items .item:nth-child(2) .progress-bar .progress{
+    width: 88%;    
+}
+section.skills .skill:nth-child(1) .items .item:nth-child(3) .progress-bar .progress{
+    width: 75%;
+}
+
+/* skill - second group */
+section.skills .skill .show-items1 .item:nth-child(1) .progress-bar .progress {   
+    width: 100%;    
+    animation: progress3 .8s forwards;
+}
+section.skills .skill .show-items1 .item:nth-child(2) .progress-bar .progress {    
+    width: 92%;    
+    animation: progress4 .8s forwards;
+}
+section.skills .skill .show-items1 .item:nth-child(3) .progress-bar .progress {    
+    width: 50%;    
+    animation: progress5 .8s forwards;
+}
+@keyframes progress3{
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 100%;
+    }
+}
+@keyframes progress4{
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 92%;
+    }
+}
+@keyframes progress5{
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 50%;
+    }
+}
+/* 상태유지 */
+section.skills .skill:nth-child(2) .items .item:nth-child(1) .progress-bar .progress{
+    width: 100%;    
+}
+section.skills .skill:nth-child(2) .items .item:nth-child(2) .progress-bar .progress{
+    width: 92%;    
+}
+section.skills .skill:nth-child(2) .items .item:nth-child(3) .progress-bar .progress{
+    width: 50%;
+}
+/* skill - third group */
+section.skills .skill .show-items2 .item:nth-child(1) .progress-bar .progress {   
+    width: 92%;    
+    animation: progress6 .8s forwards;
+}
+section.skills .skill .show-items2 .item:nth-child(2) .progress-bar .progress {    
+    width: 88%;    
+    animation: progress7 .8s forwards;
+}
+section.skills .skill .show-items2 .item:nth-child(3) .progress-bar .progress {    
+    width: 75%;    
+    animation: progress8 .8s forwards;
+}
+@keyframes progress6{
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 92%;
+    }
+}
+@keyframes progress7{
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 88%;
+    }
+}
+@keyframes progress8{
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 75%;
+    }
+}
+/* 상태유지 */
+section.skills .skill:nth-child(3) .items .item:nth-child(1) .progress-bar .progress{
+    width: 92%;    
+}
+section.skills .skill:nth-child(3) .items .item:nth-child(2) .progress-bar .progress{
+    width: 88%;    
+}
+section.skills .skill:nth-child(3) .items .item:nth-child(3) .progress-bar .progress{
+    width: 75%;
+}
+/* ===================== SERVICES ==================================== */
+section.services {
+    background: var(--color-light);
+}
+section.services .container {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 2rem;
+}
+section.services .container .service {
+    background: var(--color-white);
+    padding: 3rem 2rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    cursor: default;
+    transition: var(--transition);
+}
+section.services .container .service:hover {
+    box-shadow: 0 3rem 3rem var(--color-primary-light);
+}
+section.services .container .service span {
+    background: var(--color-primary);
+    width: 4rem;
+    height: 4rem;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: var(--color-white);
+}
+section.services .container .service:nth-child(2) span{
+    background: var(--color-warning);
+}
+section.services .container .service:nth-child(3) span{
+    background: var(--color-success);
+}
+/* ================================= portfolio ======================================= */
+.recent-work {
+    /* background: var(--color-light); */
+}
+.work__container {
+    grid-template-columns: repeat(3,1fr);
+    gap: 2rem;
+    padding-top: 1rem;
+    justify-content: center;
+  }
+  
+  .work__filters {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: .75rem;
+    margin-bottom: 2rem;
+  }
+  .work__item {
+    cursor: pointer;
+    /* color: var(--title-color); */
+    color: #333;
+    padding: .45rem .75rem;
+    font-weight: 700;
+    border-radius: .5rem;
+    font-size: 1.2rem;
+  }
+  
+  .work__card {
+    background-color: var(--container-color);
+    padding: 1.25rem;    
+    border-radius: 1rem;
+  }
+  
+  .work__img {
+    border-radius: 1.25rem;
+    width: 90%;
+    height: 90%;
+    /* width: 330px;
+    height: 330px; */
+    object-fit: cover;
+    margin-bottom: 1rem;
+  }
+  
+      
+  .work__title {
+    /* font-size: var(--normal-font-size); */
+    font-size: 1.2rem;
+    /* font-weight: var(--font-medium); */
+    font-weight: 500;
+    margin-bottom: .25rem;
+  }
+  
+  .work__button {
+    width: max-content;
+    /* color: var(--first-color); */
+    color: var(--color-primary);
+    font-size: var(--small-font-size);
+    display: flex;
+    align-items: center;
+    column-gap: .25rem;
+  }
+  
+  .work__button:hover .work__icon {
+    transform: translateX(.25rem);
+  }
+  .work__icon {
+    font-size: 1rem;
+    transition: .4s;
+  }
+  /* Active item work*/
+  .active-work {
+    background-color: var(--color-primary);
+    
+  }
+/* ==================================== contact ====================== */
+section.contact {
+    background:url(../images/pexels-cowomen-2041627.jpg) no-repeat center center/cover;
+    /* background-size: cover; */
+    max-width: 100vw;
+    padding: 0;
+}
+section.contact .overlay {
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    padding: 10rem 0 7rem;
+}
+section.contact .container {
+    width: 40%;
+}
+section.contact .container h1 {
+    margin: 0;
+    color: var(--color-white);
+
+}
+section.contact .container p{
+    text-align: center;
+    color:var(--color-white);
+    opacity: 0.8;
+    margin-top: 0.5rem;
+}
+section.contact form {
+    margin-top: 3rem;
+}
+section.contact form input,
+section.contact form textarea {
+    display: block;
+    width: 100%;
+    margin: 0.5rem 0;
+    padding: 1.6rem;
+    border: 1px solid var(--color-white);
+    background: transparent;
+    color: var(--color-white);
+    transition: var(--transition);
+}
+section.contact form textarea {
+    height: 10rem;
+}
+section.contact form input:focus,
+section.contact form textarea:focus {
+    background: var(--color-white);
+    color: var(--color-black);
+}
+section.contact form input::placeholder,
+section.contact form textarea::placeholder {
+    color: var(--color-white);
+}
+section.contact form .btn {
+    width: 14rem;
+    border: none;
+    background: var(--color-white);
+    color: var(--color-black);
+    margin: 2rem auto 0;
+}
+section.contact form .btn:hover {
+    background: var(--color-primary);
+    cursor: pointer;
+    color: var(--color-white);
+}
+
+/* ===================== footer ======================== */
+footer {
+    padding-top: 5rem;
+}
+footer .container {
+   
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+footer .container ul {
+    display: flex;
+    gap: 3rem;
+}
+footer .container ul a {
+    color: var(--color-dark);
+
+}
+footer .container ul a:hover {
+    color: var(--color-primary);
+}
+
+footer .container .socials {
+    display: flex;
+    gap: 2rem;
+}
+footer .container .socials a {
+    background: var(--color-light);
+    color: var(--color-bark);
+    padding: 0.3rem;
+    border-radius: 50%;
+    transition: var(--transition);
+}
+footer .container .socials a:hover {
+    background: var(--color-primary);
+    color: var(--color-white);
+}
+footer .copyright {
+    background: var(--color-primary);
+    color: var(--color-white);
+    text-align: center;
+    margin-top: 5rem;
+    padding: 2rem 0;
+    font-size: 0.8rem;
+}
+
+/* ============================== MEDIA QUERIES (TABLET) =================== */
+@media screen and (max-width: 1400px) {
+    section.landing .container {
+        grid-template-columns: 5rem auto 32rem;
+        gap: 1.5rem;
+    }
+   
+}
+@media screen and (max-width: 1220px) {
+    header {position: fixed; top: 0; left: 0; width: 100%;}
+    header .container {width: 97%; height: 100%;}
+    header nav .menu{ display: none;}
+    header .logo { width: 97%;}
+    .mobile-btn {display: block; z-index: 999;}
+    .menu-mobile.active {
+        display: block;
+    }
+    
+    header .container nav .menu {
+        display: none;
+        
+    }
+    
+    /* ============================ LANDING SECTION ================== */
+    section.landing .container {
+        width: 95%;
+        grid-template-columns: 55% 45%;
+        grid-template-rows: 72% 10%;
+        text-align: center;
+        gap: 0.5rem;
+        /* row-gap: rem; */
+    }
+    section.landing .container .info {
+        /* grid-row: 1/3; */
+        grid-column: 1/2;
+    }
+    section.landing .container .info p {
+        width: auto;
+    }
+    section.landing .container .socials {
+        grid-row:2/3;
+        grid-column: 2/3;
+    
+        /* display: flex; */
+        flex-direction: row;
+        justify-content: center;
+        gap: 1.6rem;
+        margin-top: 1.2rem;
+      
+    }
+    section.landing .container .profile-area {
+        /* margin-top: -9rem;        */
+    }
+    section.landing .container .outer-circle {
+        width: 24rem;
+        height: 24rem;
+    }
+    section.landing .container .outer-circle span {
+        width: 3rem;
+        height: 3rem;
+    }
+    section.landing .container .mid-circle span {
+        width: 1rem;
+        height: 1rem;
+    }
+    section.landing .container .mid-circle {
+        width: 20rem;
+        height: 20rem;
+    }
+    section.landing .container .inner-circle {
+        width: 18rem;
+        height: 18rem;
+    }
+    section.landing .profile-area .outer-circle span:nth-child(1) {
+        left: calc(50% - 1.5rem);
+        top:-1.5rem;
+    }
+    section.landing .profile-area .outer-circle span:nth-child(2) {
+        right:  -1.5rem;
+        top: calc(50% - 1.5rem);
+    }
+    section.landing .profile-area .outer-circle span:nth-child(3) {
+        left:  -1.5rem;
+        top: calc(50% - 1.5rem);
+    }
+    section.landing .profile-area .outer-circle span:nth-child(4) {
+        left: calc(50% - 1.5rem);
+        bottom:-1.5rem;
+    }
+    section.landing .profile-area .mid-circle span:nth-child(1) {
+        left: calc(50% - 0.5rem);
+        top:-0.5rem;
+    }
+    section.landing .profile-area .mid-circle span:nth-child(2) {
+        right:  -0.5rem;
+        top: calc(50% - 0.5rem);
+    }
+    section.landing .profile-area .mid-circle span:nth-child(3) {
+        left:  -0.5rem;
+        top: calc(50% - 0.5rem);
+    }
+    section.landing .profile-area .mid-circle span:nth-child(4) {
+        left: calc(50% - 0.5rem);
+        bottom:-0.5rem;
+    }
+    section.about .container {
+        width: 95%;
+        display: grid;
+        grid-template-columns: 40% 55%;
+        gap: 3rem;
+    }
+    /* ============================== SERVICES SECTION ============== */
+   section.services .container {
+    width: 95%;
+    gap: 1.5rem;
+   }
+   /* =========================== PORTFOLIO SECTION ==================== */
+   section.recent-work .container {
+    width: 95%;
+   }
+   section.recent-work .work__container {
+    gap: 0.5rem;
+   }
+   section.recent-work .work__container .work__img {
+    width: 90%;
+    height: 90%;
+    
+   }
+   /* ========================== FOOTER SECTION ============================ */
+  footer .container {
+    width: 95%;
+   }
+}
+@media all and (max-width:960px){
+
+    /* ============================ LANDING SECTION ================== */
+    section.landing .container {
+        width: 95%;
+        grid-template-columns: 60% 40%;
+        grid-template-rows: 72% 10%;
+        text-align: center;
+        gap: 0.5rem;
+        /* row-gap: rem; */
+    }
+    section.landing .container .info {
+        /* grid-row: 1/3; */
+        grid-column: 1/2;
+    }
+    section.landing .container .socials {
+        grid-row:2/3;
+        grid-column: 2/3;
+    
+        /* display: flex; */
+        flex-direction: row;
+        justify-content: center;
+        gap: 1.6rem;
+        margin-top: 0rem;
+      
+    }
+    section.landing .container .profile-area {
+        /* margin-top: -9rem;        */
+    }
+    section.landing .container .outer-circle {
+        width: 20rem;
+        height: 20rem;
+    }
+    section.landing .container .outer-circle span {
+        width: 3rem;
+        height: 3rem;
+    }
+    section.landing .container .mid-circle span {
+        width: 1rem;
+        height: 1rem;
+    }
+    section.landing .container .mid-circle {
+        width: 16rem;
+        height: 16rem;
+    }
+    section.landing .container .inner-circle {
+        width: 14rem;
+        height: 14rem;
+    }
+    section.landing .profile-area .outer-circle span:nth-child(1) {
+        left: calc(50% - 1.5rem);
+        top:-1.5rem;
+    }
+    section.landing .profile-area .outer-circle span:nth-child(2) {
+        right:  -1.5rem;
+        top: calc(50% - 1.5rem);
+    }
+    section.landing .profile-area .outer-circle span:nth-child(3) {
+        left:  -1.5rem;
+        top: calc(50% - 1.5rem);
+    }
+    section.landing .profile-area .outer-circle span:nth-child(4) {
+        left: calc(50% - 1.5rem);
+        bottom:-1.5rem;
+    }
+    section.landing .profile-area .mid-circle span:nth-child(1) {
+        left: calc(50% - 0.5rem);
+        top:-0.5rem;
+    }
+    section.landing .profile-area .mid-circle span:nth-child(2) {
+        right:  -0.5rem;
+        top: calc(50% - 0.5rem);
+    }
+    section.landing .profile-area .mid-circle span:nth-child(3) {
+        left:  -0.5rem;
+        top: calc(50% - 0.5rem);
+    }
+    section.landing .profile-area .mid-circle span:nth-child(4) {
+        left: calc(50% - 0.5rem);
+        bottom:-0.5rem;
+    }
+    /* ================== portfolio section ================= */
+    section.recent-work .work__container  {
+        grid-template-columns: repeat(2,1fr);
+        gap: 1rem;
+    }
+    /* ======================== FOOTER SECTION =================== */
+    footer .container {
+        flex-direction: column;
+        gap: 2rem;
+    }
+    
+} 
+
+@media all and (max-width:840px) {
+    
+    /* ============================ LANDING SECTION ================== */
+    section.landing {
+        /* margin-top: -4rem; */
+        padding-bottom: 0rem;
+        max-width: 100vw;
+        overflow-x: hidden;
+        
+    }
+    section.landing .container {
+        grid-template-columns: 1fr;
+        grid-template-rows: 20% 50%;
+        text-align: center;
+        row-gap: 6rem;
+    }
+    section.landing .container .socials {
+        display: none;
+    }
+    section.landing .container .info {
+        width: 90%;
+        margin: 0 auto;
+    }
+    section.landing .container .info h1 {
+        text-align: center;
+    }
+    section.landing .container .info p {
+        margin: 0 auto;
+        width: 92%;
+    }
+    section.landing .container .profile-area {
+        grid-row: 1;
+        width: 94%;
+        margin: 0 auto;
+        padding-top: 3rem;
+        padding-bottom: 1.25rem;
+    }
+    /* ===================== SERVICES SECTION ================= */
+    section.services .container {
+        grid-template-columns: 1fr;
+        /* grid-template-rows: auto auto auto; */
+    }
+   
+}
+/* ============================== MEDIA QUERIES (PHONES) =================== */
+@media screen and (max-width: 600px) {
+    h1 {
+        font-size: 2.2rem;        
+    }
+    h2 {
+        font-size: 1.6rem;
+    }
+    h3 {
+        font-size: 1.2rem;
+    }
+    h4 {
+        font-size: 1rem;
+    }
+    h5 {
+        font-size: 0.68rem;
+    }
+    .container {
+        width: 94%;
+    }
+    /* ============== header BAR ===============*/
+    header {
+        box-shadow: 0 1rem 1rem rgba(0,0,0,0.1);        
+    }
+    header h1 {
+        margin-left: 1rem;
+    }
+    header .container {
+        width: 100%;
+    } 
+    header .container h1 a {
+        width: 140px;
+        background-position: 35% center;
+        background-size: 100px 44.5px;
+    }
+    /* header .container nav .menu {
+        position: fixed;
+        top: 0;
+        flex-direction: column;
+        z-index: 3;
+        width: 16rem;
+        height: 100vh;
+        background: var(--color-white);
+        box-shadow: 1rem 0  2rem var(--color-primary-light);
+        display: none;
+
+    }
+    header .container nav .menu li {
+        height: 4.6rem;
+        width: 100%;                
+    }
+    header .container nav .menu li a {
+        width: 100%;
+        justify-content: start;
+        padding-left: 2rem;
+    } */
+    header button {
+        display: inline-block;
+        cursor: pointer;
+        background: transparent;
+        color: var(--color-black);
+        margin-right: 1rem;
+    }
+    header button#close-btn {
+        display: none;
+    }
+    /* ============================ LANDING SECTION ================== */
+    section.landing {
+        padding-bottom: 0;
+    }
+    section.landing .container .outer-circle {
+        width: 16rem;
+        height: 16rem;
+    }
+    section.landing .container .outer-circle span {
+        width: 3rem;
+        height: 3rem;
+    }
+    section.landing .container .mid-circle span {
+        width: 1rem;
+        height: 1rem;
+    }
+    section.landing .container .mid-circle {
+        width: 13rem;
+        height: 13rem;
+    }
+    section.landing .container .inner-circle {
+        width: 10rem;
+        height: 10rem;
+    }
+    section.landing .profile-area .outer-circle span:nth-child(1) {
+        left: calc(50% - 1.5rem);
+        top:-1.5rem;
+    }
+    section.landing .profile-area .outer-circle span:nth-child(2) {
+        right:  -1.5rem;
+        top: calc(50% - 1.5rem);
+    }
+    section.landing .profile-area .outer-circle span:nth-child(3) {
+        left:  -1.5rem;
+        top: calc(50% - 1.5rem);
+    }
+    section.landing .profile-area .outer-circle span:nth-child(4) {
+        left: calc(50% - 1.5rem);
+        bottom:-1.5rem;
+    }
+    section.landing .profile-area .mid-circle span:nth-child(1) {
+        left: calc(50% - 0.5rem);
+        top:-0.5rem;
+    }
+    section.landing .profile-area .mid-circle span:nth-child(2) {
+        right:  -0.5rem;
+        top: calc(50% - 0.5rem);
+    }
+    section.landing .profile-area .mid-circle span:nth-child(3) {
+        left:  -0.5rem;
+        top: calc(50% - 0.5rem);
+    }
+    section.landing .profile-area .mid-circle span:nth-child(4) {
+        left: calc(50% - 0.5rem);
+        bottom:-0.5rem;
+    }
+    /* ============= ABOUT SECTION =============== 
+    */
+    section.about .container {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        text-align: center;       
+
+    }
+    /* ================= SKILLS SECTION =========== */
+    section.skills .container {
+        width: 94%;
+    }
+    /* ================= SERVICES SECTION ============= */
+    section.services .container {
+        grid-template-columns: 1fr;
+    }
+    
+    /* ================= PORTFOLIO SECTION ============= */
+    
+    section.recent-work .work__container {
+        /* grid-template-columns: repeat(1,max-content); */
+        grid-template-columns:1fr; /*1fr한번반복*/
+        /* gap: 0.5rem; */
+      }
+      section.recent-work .work__container .work__card {
+        width: 97%;
+        height: auto;
+        padding: 1rem 0;
+        margin: 0 auto;
+        
+    }
+    section.recent-work .work__container .work__card .work__img {
+        width: 100%;
+        /* width: 412px; */
+        /* height: 270px; */
+    }
+    /* ================= CONTACT SECTION ============= */
+    section.contact .container {
+        width: 94vw;        
+    }
+    section.contact .container p {
+        width:80vw;
+        margin: 0.5rem auto 0;
+    }
+        /* ================= FOOTER SECTION ============= */
+    footer .container {
+        flex-direction: column;
+        gap: 3rem;
+    }
+    footer .container ul {
+        flex-direction: column;
+        text-align: center;
+        gap: 1.4rem;
+    }
+}
